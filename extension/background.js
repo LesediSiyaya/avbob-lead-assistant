@@ -4,7 +4,7 @@
 // ============================================================
 'use strict';
 
-const DEFAULT_BACKEND = 'http://localhost:8000';
+const DEFAULT_BACKEND = 'https://a30d2e54-fa73-4aa1-a40d-ddd0b19b69d6-00-2bck7j5zeshjh.worf.replit.dev/api';
 
 // ── Message router ─────────────────────────────────────────────
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
