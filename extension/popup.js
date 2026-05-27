@@ -3,7 +3,7 @@
 // ============================================================
 'use strict';
 
-const DEFAULT_URL = 'https://zip-hub--lesedisiyaya.replit.app';
+const DEFAULT_URL = 'https://a30d2e54-fa73-4aa1-a40d-ddd0b19b69d6-00-2bck7j5zeshjh.worf.replit.dev/api';
 let backendUrl    = DEFAULT_URL;
 let allLeads      = [];
 
