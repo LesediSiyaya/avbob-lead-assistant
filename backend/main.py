@@ -7,7 +7,7 @@ from contextlib import asynccontextmanager
 
 from fastapi                  import FastAPI
 from fastapi.middleware.cors  import CORSMiddleware
-from fastapi.responses        import HTMLResponse
+from fastapi.responses        import HTMLResponse, RedirectResponse
 
 from database         import init_db, get_all_leads, get_stats
 from routes.analyze   import router as analyze_router
@@ -46,6 +46,12 @@ app.include_router(whatsapp_router, tags=["WhatsApp"])
 app.include_router(leads_router,    tags=["CRM"])
 
 
+# ── Root → dashboard redirect ──────────────────────────────────
+@app.get("/", tags=["System"], include_in_schema=False)
+def root():
+    return RedirectResponse(url="/dashboard")
+
+
 # ── Health ─────────────────────────────────────────────────────
 @app.get("/health", tags=["System"])
 def health():
@@ -57,6 +63,11 @@ def health():
 def dashboard():
     leads = get_all_leads(limit=200)
     stats = get_stats()
+    ai_warning = "" if os.getenv("OPENAI_API_KEY") else (
+        '<div style="background:#7c2d12;color:#fca5a5;padding:10px 28px;font-size:12px;font-weight:700;">'
+        '⚠️  OPENAI_API_KEY is not set — AI scoring is disabled. Add it in your deployment Secrets to enable full analysis.'
+        '</div>'
+    )
 
     def score_badge(s):
         if s >= 75: return f'<span style="color:#22c55e;font-weight:700">{s}</span>'
@@ -114,6 +125,7 @@ def dashboard():
   </style>
 </head>
 <body>
+  {ai_warning}
   <div class="header">
     <div>
       <div class="logo">🤝 AVBOB Lead Assistant</div>
