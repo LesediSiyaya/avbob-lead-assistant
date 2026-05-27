@@ -14,6 +14,7 @@ from routes.analyze   import router as analyze_router
 from routes.replies   import router as replies_router
 from routes.whatsapp  import router as whatsapp_router
 from routes.leads     import router as leads_router
+from routes.facebook  import router as facebook_router
 
 
 # ── Startup / shutdown ─────────────────────────────────────────
@@ -44,6 +45,7 @@ app.include_router(analyze_router,  tags=["Analysis"])
 app.include_router(replies_router,  tags=["Reply Generation"])
 app.include_router(whatsapp_router, tags=["WhatsApp"])
 app.include_router(leads_router,    tags=["CRM"])
+app.include_router(facebook_router, tags=["Facebook"])
 
 
 # ── Root → dashboard redirect ──────────────────────────────────
