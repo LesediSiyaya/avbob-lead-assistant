@@ -14,7 +14,8 @@
     "https://*.railway.app/*",
     "https://*.onrender.com/*",
     "https://*.fly.dev/*",
-    "https://*.up.railway.app/*"
+    "https://*.up.railway.app/*",
+    "https://*.replit.app/*"
   ],
 
   "background": {
