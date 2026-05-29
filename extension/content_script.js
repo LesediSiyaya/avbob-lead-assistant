@@ -28,7 +28,7 @@ const KEYWORDS = [
 
 // ── State ──────────────────────────────────────────────────────
 const injectedPosts = new WeakSet();
-let backendUrl = 'http://localhost:8000';
+let backendUrl = 'https://zip-hub--lesedisiyaya.replit.app';
 
 // Load backend URL from storage
 chrome.storage.local.get(['backendUrl'], (r) => {
